@@ -43,7 +43,6 @@ int main(void) {
     Menu sidemenu;
     chessboard.setupPieces();
     InputHandler input;
-
     while (!WindowShouldClose()) {
         input.update(100);
         static int startCol = -1, startRow = -1;
@@ -68,14 +67,15 @@ int main(void) {
         }
 
         BeginDrawing();
-            ClearBackground(RAYWHITE);
+            ClearBackground(DARKBROWN);
             chessboard.drawBoard(); 
             if(pieceSelected){
             DrawRectangle(startCol * 100, startRow * 100, 100, 100, Fade(YELLOW, 0.4f));
             }
             if(GetMouseX() < 800){
                 if(input.selected.active){
-                    DrawRectangleLines(input.selected.col * 100, input.selected.row * 100, 100, 100, DARKBLUE);
+                    Rectangle rec = {input.selected.col * 100, input.selected.row * 100, 100, 100};
+                    DrawRectangleLinesEx(rec, 3, DARKGREEN);
                 }
             }
             sidemenu.Notation();

@@ -87,7 +87,8 @@ void Board::movePiece(int from_x, int from_y, int to_x, int to_y){
     grid[from_x][from_y] = nullptr;
     switchTurn();
     increaseMoves();
-   // std::string s = std::format("Move {}\n", moves);
+    pieceToMove->changeMoveCount();
+    //std::string s = std::format("Move {}\n", moves);
     //menu.addLog("Move");
 }
 
@@ -100,7 +101,7 @@ bool Board::isMoveValid(int from_x, int from_y, int to_x, int to_y){
 
     switch(p->type){
         case PAWN:
-            return validatePawn(from_x, from_y, to_x, to_y, p->color);
+            return validatePawn(from_x, from_y, to_x, to_y, p->color, p->type);
         case ROOK:
             return validateRook(from_x, from_y, to_x, to_y, p->color);
         case KNIGHT:
@@ -150,12 +151,13 @@ bool Board::isPathClear(int from_x, int from_y, int to_x, int to_y){
 
 }
 
-bool Board::validatePawn(int from_x, int from_y, int to_x, int to_y, PieceColor color){
+bool Board::validatePawn(int from_x, int from_y, int to_x, int to_y, PieceColor color, PieceType type){
     int direction = (color == WHITE_PIECE) ? -1 : 1;
     int startRow = (color == WHITE_PIECE) ? 6 : 1;
 
     int dx = to_x - from_x;
     int dy = to_y - from_y;
+
 
     Piece* target = grid[to_x][to_y];
     if(target != nullptr && target->color == color){
@@ -170,12 +172,25 @@ bool Board::validatePawn(int from_x, int from_y, int to_x, int to_y, PieceColor 
     if(dx == 0 && dy == 2 * direction && from_y == startRow){
         return (grid[to_x][to_y] == nullptr && grid[from_x][from_y + direction] == nullptr);
     }
-    // bicie na skos
-    if(abs(dx) == 1 && dy == direction){
-        return (grid[to_x][to_y] != nullptr && grid[to_x][to_y]->color != color);
+    // bicie 
+   if (abs(dx) == 1 && dy == direction) {
+        //na skos
+        if (grid[to_x][to_y] != nullptr && grid[to_x][to_y]->color != color) {
+            return true;
+        }
+        // en pasą
+        if (grid[to_x][to_y] == nullptr) {
+            Piece* sasiad = grid[to_x][from_y]; 
+            // jeszcze na pozniej trzeba zrobić sprawdzenie czy został w poprzedniej turze zrobiony ten ruch
+            if (sasiad != nullptr && 
+                sasiad->type == PAWN && 
+                sasiad->color != color && 
+                sasiad->moveCount == 1) {
+                grid[to_x][from_y] = nullptr;
+                return true; 
+            }
+        }
     }
-    // tutaj bedzie en pasą
-
     return false;
 }
 

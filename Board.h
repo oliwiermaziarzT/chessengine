@@ -9,7 +9,7 @@ class Piece {
     public:
         PieceType type;
         PieceColor color;
-        bool hasMoved = false;
+        int moveCount;
 
         void draw(int col, int row, int cellSize, Texture2D pieceTexture) {
         float targetSize = cellSize * 0.8f; 
@@ -18,12 +18,10 @@ class Piece {
         float posY = row * cellSize + (cellSize - (pieceTexture.height * scale)) / 2.0f;
         DrawTextureEx(pieceTexture, {posX, posY}, 0.0f, scale, WHITE);
         }
-        /*bool changeHasMoved(){
-            return hasMoved = true;
+        bool changeMoveCount(){
+            return moveCount += 1;
         }
-        bool checkIfMoved(){
-            return hasMoved;
-        }*/
+
 };
 
 class Board {
@@ -48,7 +46,7 @@ class Board {
     void movePiece(int from_x, int from_y, int to_x, int to_y);
     bool isMoveValid(int from_x, int from_y, int to_x, int to_y);
     bool isPathClear(int from_x, int from_y, int to_x, int to_y);
-    bool validatePawn(int a, int b, int c, int d, PieceColor color);
+    bool validatePawn(int a, int b, int c, int d, PieceColor color, PieceType type);
     bool validateRook(int a, int b, int c, int d, PieceColor color);
     bool validateBishop(int a, int b, int c, int d, PieceColor color);
     bool validateQueen(int a, int b, int c, int d, PieceColor color);
