@@ -7,8 +7,8 @@ Gra szachowa napisana w C++ z wykorzystaniem biblioteki [Raylib](https://www.ray
 ---
 
 ## Aktualny stan projektu
-
-### ✅ Zaimplementowane
+    
+### Zaimplementowane
 
 - Plansza 8×8 z teksturami figur
 - Pełna walidacja ruchów dla wszystkich figur (pionek, wieża, skoczek, goniec, hetman, król)
@@ -18,7 +18,7 @@ Gra szachowa napisana w C++ z wykorzystaniem biblioteki [Raylib](https://www.ray
 - System tur
 ---
 
-## 🚧 Do zaimplementowania
+## Do zaimplementowania
 
 ### Logika gry
 - [ ] Wykrywanie **mata** — brak legalnych ruchów przy szachu
