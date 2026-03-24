@@ -1,22 +1,11 @@
 # ♟️ Chess (C++ / Raylib)
 
-> **Projekt w toku — nie jest jeszcze gotowy do pełnego użytku.**
+> **Projekt w toku**
 
 Gra szachowa napisana w C++ z wykorzystaniem biblioteki [Raylib](https://www.raylib.com/). Aktualnie zaimplementowane są podstawowe mechaniki: ruch figur, walidacja ruchów, roszada, bicie en passant oraz wykrywanie szacha.
 
 ---
 
-## Aktualny stan projektu
-    
-### Zaimplementowane
-
-- Plansza 8×8 z teksturami figur
-- Pełna walidacja ruchów dla wszystkich figur (pionek, wieża, skoczek, goniec, hetman, król)
-- Wykrywanie szacha
-- Roszada
-- Bicie en passant
-- System tur
----
 
 ## Do zaimplementowania
 
@@ -30,14 +19,10 @@ Gra szachowa napisana w C++ z wykorzystaniem biblioteki [Raylib](https://www.ray
 - [ ] **System FEN** — wczytywanie i eksportowanie pozycji w formacie FEN
 - [ ] **Notacja algebraiczna** — generowanie i wyświetlanie historii ruchów w panelu bocznym
 - [ ] **GUI notacji** — przewijana lista ruchów z numerami tur w bocznym menu
-
-### Komfort gry
-- [ ] **Cofanie ruchów** (`Ctrl+Z` / przycisk w menu)
-- [ ] Historia ruchów umożliwiająca cofnięcie do dowolnego punktu partii
+- [ ] **Cofanie ruchów** - cofanie do dowolnego momentu partii
 
 ### Silnik szachowy
-- [ ] Implementacja **Chess Engine** (algorytm Minimax z alfa-beta pruning)
-- [ ] Tryb gry przeciwko komputerowi
+- [ ] Implementacja algorytmu Minimax
 ---
 
 ## Wymagania
@@ -51,22 +36,6 @@ Gra szachowa napisana w C++ z wykorzystaniem biblioteki [Raylib](https://www.ray
 ```bash
 g++ -std=c++20 main.cpp board.cpp -o chess -lraylib
 ```
-
----
-
-## Struktura projektu
-
-```
-.
-├── main.cpp          # Pętla główna, obsługa wejścia
-├── Board.h           # Deklaracje klasy Board i Piece
-├── board.cpp         # Logika planszy, walidacja ruchów
-├── InputHandler.h    # Obsługa myszy
-├── SideMenu.h        # Boczne menu (notacja, UI)
-└── assets/           # Tekstury figur (PNG)
-```
-
----
 
 ## Licencja
 
