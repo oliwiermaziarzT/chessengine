@@ -2,7 +2,8 @@
 
 > **Projekt w toku**
 
-Gra szachowa napisana w C++ z wykorzystaniem biblioteki [Raylib](https://www.raylib.com/). Aktualnie zaimplementowane są podstawowe mechaniki: ruch figur, walidacja ruchów, roszada, bicie en passant oraz wykrywanie szacha.
+Gra szachowa napisana w C++ z wykorzystaniem biblioteki [Raylib](https://www.raylib.com/). 
+Aktualnie zaimplementowane są podstawowe mechaniki: ruch figur, walidacja ruchów, roszada, bicie en passant oraz wykrywanie szacha.
 
 ---
 
