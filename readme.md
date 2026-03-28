@@ -1,4 +1,4 @@
-# ♟️ Chess (C++ / Raylib)
+# Chess (C++ / Raylib)
 
 > **Projekt w toku**
 
